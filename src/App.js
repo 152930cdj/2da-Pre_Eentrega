@@ -1,27 +1,31 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from 'react';
-import Navbar from './components/NavBar';
-import ItemListContainer from './components/ItemListContainer';
-import ItemDetailContainer from './components/ItemDetailContainer';
-import List from './components/List';
+import Carnes from "./pages/Carnes";
+import Aves from "./pages/Aves";
+import Pescados from "./pages/Pescados";
+import Pastas from "./pages/Pastas";
+import Productos from "./components/Productos";
+import Error from "./pages/Error";
+import Home from "./pages/Home";
+import Layout from "./pages/Layout";
+import Item from "./components/Item";
+import "./App.css";
+
 
 function App() {
   return (
-    <Router>
-      <div className="App">
-        <Navbar />
-        <Routes>
-          {/* Ruta raíz que muestra el catálogo */}
-          <Route path="/" element={<ItemListContainer greeting="¡Bienvenido a nuestra plataforma!" />} />
-          
-          {/* Ruta para ver productos por categoría */}
-          <Route path="/category/:categoryId" element={<ItemListContainer />} />
-          
-          <Route path="/item/:itemId" element={<ItemDetailContainer />} />
-        </Routes>
-        <List />
-      </div>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/recursos" element={<Layout/>}>
+          <Route index element={<Home/>}/>
+          <Route path="carnes" element={<Carnes/>}/>
+          <Route path="aves" element={<Aves/>}/>
+          <Route path="pescados" element={<Pescados/>}/>
+          <Route path="pastas" element={<Pastas/>}/>
+          <Route path="productos/:productoName"  element={<Productos/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

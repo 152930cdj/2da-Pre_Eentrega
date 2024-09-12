@@ -1,16 +1,17 @@
-import React from 'react';
-import CartWidget from './CartWidget';
+import { Link } from "react-router-dom";
 
-function Navbar() {
+
+function NavBar() {
   return (
     <nav>
-      <Link to="/">RestoSoft</Link>
-      <Link to="/category/carnes">Carnes</Link>
-      <Link to="/category/aves">Aves</Link>
-      <Link to="/category/pescados">Pescados</Link>
-      <Link to="/category/pastas">Pastas</Link>
+      <nav className="navbar navbar-light bg-light"></nav>
+      <Link className="navbar-brand" to="/recursos">Home</Link>
+      <Link className="navbar-brand" to="/recursos/carnes">Carnes</Link>
+      <Link className="navbar-brand" to="/recursos/aves">Aves</Link>
+      <Link className="navbar-brand" to="/recursos/pescados">Pescados</Link>
+      <Link className="navbar-brand" to="/recursos/pastas">Pastas</Link>
     </nav>
   );
 }
 
-export default Navbar;
+export default NavBar;
