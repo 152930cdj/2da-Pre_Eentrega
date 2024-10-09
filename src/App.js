@@ -1,31 +1,30 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import React from 'react';
-import Carnes from "./pages/Carnes";
-import Aves from "./pages/Aves";
-import Pescados from "./pages/Pescados";
-import Pastas from "./pages/Pastas";
-import Productos from "./components/Productos";
 import Error from "./pages/Error";
 import Home from "./pages/Home";
-import Layout from "./pages/Layout";
-import Item from "./components/Item";
 import "./App.css";
+import NavBar from "./components/NavBar/NavBar";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
+import CartDetail from "./components/Cart/Cart";
+import CartContextProvider from "./components/CartContext/CartContextProvider";
 
-
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
+    <div>
+      <CartContextProvider>
+      <NavBar/>
       <Routes>
-        <Route path="/recursos" element={<Layout/>}>
+        <Route path="/">
           <Route index element={<Home/>}/>
-          <Route path="carnes" element={<Carnes/>}/>
-          <Route path="aves" element={<Aves/>}/>
-          <Route path="pescados" element={<Pescados/>}/>
-          <Route path="pastas" element={<Pastas/>}/>
-          <Route path="productos/:productoName"  element={<Productos/>}/>
+          <Route path="/category/:categoryId" element={<ItemListContainer/>}/>
+          <Route path="detail/:id"  element={<ItemDetailContainer/>}/>
+          <Route path="/cart" element={<CartDetail/>}/>
+          <Route path="*" element={<Error/>}/>
         </Route>
       </Routes>
-    </BrowserRouter>
+      </CartContextProvider>
+    </div>
   );
 }
 

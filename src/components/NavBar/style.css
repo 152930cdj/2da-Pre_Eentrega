@@ -1,0 +1,13 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+link { 
+    color: red;
+}
+
+.navbar-brand{
+    font-size: 30px;
+}
+  
